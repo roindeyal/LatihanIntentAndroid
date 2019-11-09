@@ -20,6 +20,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btnMoveActivityWithData = findViewById(R.id.btn_move_activity_data);
         btnMoveActivityWithData.setOnClickListener(this);
 
+        Button btnMoveActivityWithObject = findViewById(R.id.btn_move_acitivity_objek);
+        btnMoveActivityWithObject.setOnClickListener(this);
+
 
     }
 
@@ -31,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_move_activity :
                 // Baris kode dibawah berfungsi untuk pindah dari activity 1 ke activity yang lain
                 Intent moveActivity = new Intent(MainActivity.this, MoveActivity.class);
+
+                // Memulai Activity yang Baru
                 startActivity(moveActivity);
                 break;
 
@@ -48,6 +53,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 // Memulai Activity yang Baru
                 startActivity(moveActivityWithData);
+                break;
+
+
+            case R.id.btn_move_acitivity_objek :
+
+                // Atur data obyek person sesuai dengan propertinya kemudian akan mengirimkan
+                // Data tersebut ke MoveWithObjectActivity
+                Person person = new Person();
+                person.setName("Andika Kurniawan");
+                person.setAge(19);
+                person.setEmail("Andikakurnwn@roindeya.com");
+                person.setCity("Bekasi");
+
+
+
+                // Baris kode dibawah berfungsi untuk pindah dari activity 1 ke activity yang lain
+                Intent moveActivityWithObject = new Intent(MainActivity.this, MoveWithObjectActivity.class);
+
+                // Mengirimkannya Melalui baris kode dibawah ini
+                moveActivityWithObject.putExtra(MoveWithObjectActivity.EXTRA_PERSON, person);
+                startActivity(moveActivityWithObject);
                 break;
 
         }
