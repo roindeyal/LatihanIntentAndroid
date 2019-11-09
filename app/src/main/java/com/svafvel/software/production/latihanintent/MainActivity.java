@@ -3,6 +3,7 @@ package com.svafvel.software.production.latihanintent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button btnMoveActivityWithObject = findViewById(R.id.btn_move_acitivity_objek);
         btnMoveActivityWithObject.setOnClickListener(this);
+
+        Button btnDialNumber = findViewById(R.id.btn_dial_number);
+        btnDialNumber.setOnClickListener(this);
 
 
     }
@@ -74,6 +78,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // Mengirimkannya Melalui baris kode dibawah ini
                 moveActivityWithObject.putExtra(MoveWithObjectActivity.EXTRA_PERSON, person);
                 startActivity(moveActivityWithObject);
+                break;
+
+            case R.id.btn_dial_number :
+
+                String phoneNumber = "081574083369";
+
+                
+                Intent dialNumber = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+phoneNumber));
+                startActivity(dialNumber);
+
                 break;
 
         }
